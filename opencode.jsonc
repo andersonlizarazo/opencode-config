@@ -7,13 +7,19 @@
     "instructions/context7.md",
     "instructions/vibeguard.md",
   ],
-  "model": "deepseek/deepseek-v4-pro",
+  "model": "deepseek/deepseek-v4-flash",
   "small_model": "deepseek/deepseek-v4-flash",
   "default_agent": "plan",
   "subagent_depth": 2,
   "agent": {
     "check-human-code": {
       "model": "deepseek/deepseek-v4-pro",
+    },
+    "explore": {
+      "model": "deepseek/deepseek-v4-flash",
+    },
+    "general": {
+      "model": "deepseek/deepseek-v4-flash",
     },
   },
   "mcp": {

@@ -5,6 +5,7 @@ temperature: 0.1
 permission:
   edit: deny
   bash:
+    "*": ask
     git diff*: allow
     git log*: allow
     rg *: allow
