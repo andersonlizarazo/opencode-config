@@ -1,0 +1,44 @@
+{
+  "enabled": true,
+  "debug": false,
+  "placeholder_prefix": "__MASKED_SECRET_",
+  "session": {
+    "ttl": "4h",
+    "max_mappings": 100000
+  },
+  "patterns": {
+    "keywords": [
+      { "value": "my-api-key_keyword-example", "category": "API_KEY" }
+    ],
+    "regex": [
+      { "pattern": "sk-[A-Za-z0-9]{48}", "category": "OPENAI_KEY" },
+      {
+        "pattern": "(ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]+",
+        "category": "GITHUB_TOKEN"
+      },
+      { "pattern": "AKIA[0-9A-Z]{16}", "category": "AWS_ACCESS_KEY" },
+      { "pattern": "pk1_[A-Za-z0-9]{64}", "category": "PORKBUN_API_KEY" },
+      { "pattern": "sk1_[A-Za-z0-9]{64}", "category": "PORKBUN_API_KEY" },
+      {
+        "pattern": "\\$2[aby]\\$\\d+\\$[./A-Za-z0-9]{53}",
+        "category": "BCRYPT_HASH"
+      },
+      {
+        "pattern": "[srp]k_(live|test)_[A-Za-z0-9]+",
+        "category": "STRIPE_KEY"
+      },
+      {
+        "pattern": "xox[abp]-\\d+-\\d+-\\d+-[a-z0-9]+",
+        "category": "SLACK_TOKEN"
+      },
+      {
+        "pattern": "-----BEGIN [A-Z ]*PRIVATE KEY-----[\\s\\S]*?-----END [A-Z ]*PRIVATE KEY-----",
+        "category": "PRIVATE_KEY"
+      },
+      { "pattern": "hf_[A-Za-z0-9]{34}", "category": "HUGGINGFACE_TOKEN" },
+      { "pattern": "AIza[0-9A-Za-z\\-_]{35}", "category": "GOOGLE_API_KEY" }
+    ],
+    "builtin": ["email", "china_phone", "china_id", "uuid", "ipv4", "mac"],
+    "exclude": ["example.com", "localhost", "127.0.0.1", "0.0.0.0"]
+  }
+}
