@@ -9,9 +9,12 @@
   ],
   "model": "deepseek/deepseek-v4-flash",
   "small_model": "deepseek/deepseek-v4-flash",
-  "default_agent": "plan",
+  "default_agent": "general",
   "subagent_depth": 2,
   "agent": {
+    "build": {
+      "model": "deepseek/deepseek-v4-flash",
+    },
     "check-human-code": {
       "model": "deepseek/deepseek-v4-pro",
     },
@@ -20,6 +23,11 @@
     },
     "general": {
       "model": "deepseek/deepseek-v4-flash",
+      "mode": "primary",
+    },
+    "plan": {
+      "model": "deepseek/deepseek-v4-pro",
+      "mode": "subagent",
     },
   },
   "mcp": {
