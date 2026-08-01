@@ -17,13 +17,28 @@
     },
     "check-human-code": {
       "model": "deepseek/deepseek-v4-pro",
+      "permission": {
+        "skill": {
+          "coding-standards": "deny"
+        }
+      },
     },
     "explore": {
       "model": "deepseek/deepseek-v4-flash",
+      "permission": {
+        "skill": {
+          "coding-standards": "deny"
+        }
+      },
     },
     "general": {
       "model": "deepseek/deepseek-v4-flash",
       "mode": "primary",
+      "permission": {
+        "skill": {
+          "coding-standards": "deny"
+        }
+      },
     },
     "plan": {
       "model": "deepseek/deepseek-v4-pro",
@@ -42,7 +57,6 @@
   },
   "enabled_providers": ["deepseek"],
   "plugin": [
-    "@dietrichgebert/ponytail",
     "cc-safety-net",
     "opencode-vibeguard",
   ],
