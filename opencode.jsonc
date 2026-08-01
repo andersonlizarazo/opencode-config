@@ -4,7 +4,6 @@
     "instructions/candor.md",
     "instructions/environment.md",
     "instructions/shell-strategy.md",
-    "instructions/context7.md",
     "instructions/vibeguard.md",
   ],
   "model": "deepseek/deepseek-v4-flash",
