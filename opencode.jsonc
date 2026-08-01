@@ -5,6 +5,7 @@
     "instructions/environment.md",
     "instructions/shell-strategy.md",
     "instructions/vibeguard.md",
+    "instructions/source-code-fetch.md",
   ],
   "model": "deepseek/deepseek-v4-flash",
   "small_model": "deepseek/deepseek-v4-flash",
