@@ -1,6 +1,6 @@
 # Environment
 
-This machine runs **Arch Linux**.
+This machine runs **Arch Linux**. Distribution docs are at `/usr/share/doc/arch-wiki`.
 
 ## Key Paths
 - Package management: `pacman` and `yay` are available, also the `chaotic-aur` mirrors are configured
