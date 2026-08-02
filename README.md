@@ -2,6 +2,10 @@
 
 This is my personal [OpenCode](https://opencode.ai) configuration.
 
+## AI Disclosure
+
+Portions of this repository were generated and polished using artificial intelligence (LLM) tools. All AI-assisted code was reviewed, tested, and integrated by human contributors.
+
 ## Credits
 
 - [opencode-shell-strategy](https://github.com/JRedeker/opencode-shell-strategy) — adapted in [`instructions/shell-strategy.md`](instructions/shell-strategy.md) for non-interactive shell behavior.
