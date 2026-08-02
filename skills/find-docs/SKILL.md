@@ -23,6 +23,14 @@ Fetch up-to-date docs and code examples for a library with the Context7 CLI. Ans
 
 ## Workflow
 
+0. **Local manuals first (CLI tools installed on this machine).** Before
+   going to the web, check the installed tool's own docs:
+   - `tldr <tool>` — concise usage examples, non-interactive.
+   - `MANPAGER=cat man <tool>` — full manual page. `MANPAGER=cat` disables the
+     pager so `man` prints and exits instead of hanging; this is mandatory in a
+     non-TTY shell. `PAGER=cat` alone also works.
+   These match the exact installed version and are faster than any web lookup.
+   Skip to step 1 if they do not answer the question or the tool is not local.
 1. Resolve the library ID: `npx ctx7@latest library <name> "<query>"`
 2. Query the docs: `npx ctx7@latest docs <libraryId> "<query>"`
 3. Iterate with new queries as needed, then answer.
