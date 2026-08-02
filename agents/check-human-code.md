@@ -6,9 +6,24 @@ permission:
   edit: deny
   bash:
     "*": ask
-    git diff*: allow
-    git log*: allow
-    rg *: allow
+    "ls *": allow
+    "pwd": allow
+    "which *": allow
+    "type *": allow
+    "find *": allow
+    "rg *": allow
+    "man *": allow
+    "MANPAGER=cat man *": allow
+    "tldr *": allow
+    "npx ctx7*": allow
+    "git status *": allow
+    "git diff *": allow
+    "git --no-pager diff *": allow
+    "git log *": allow
+    "git --no-pager log *": allow
+    "git branch *": allow
+    "git remote *": allow
+    "git config --list *": allow
 ---
 
 <role>

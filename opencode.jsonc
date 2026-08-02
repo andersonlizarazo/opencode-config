@@ -8,6 +8,32 @@
     "instructions/source-code-fetch.md",
     "instructions/docs-first.md",
   ],
+  "permission": {
+    "bash": {
+      "*": "ask",
+      "MANPAGER=cat man *": "allow",
+      "echo *": "allow",
+      "false": "allow",
+      "find *": "allow",
+      "git --no-pager diff *": "allow",
+      "git --no-pager log *": "allow",
+      "git branch *": "allow",
+      "git config --list *": "allow",
+      "git diff *": "allow",
+      "git log *": "allow",
+      "git remote *": "allow",
+      "git status *": "allow",
+      "ls *": "allow",
+      "man *": "allow",
+      "npx ctx7*": "allow",
+      "pwd": "allow",
+      "rg *": "allow",
+      "tldr *": "allow",
+      "true": "allow",
+      "type *": "allow",
+      "which *": "allow",
+    },
+  },
   "model": "deepseek/deepseek-v4-flash",
   "small_model": "deepseek/deepseek-v4-flash",
   "default_agent": "general",
@@ -20,16 +46,16 @@
       "model": "deepseek/deepseek-v4-pro",
       "permission": {
         "skill": {
-          "coding-standards": "deny"
-        }
+          "coding-standards": "deny",
+        },
       },
     },
     "explore": {
       "model": "deepseek/deepseek-v4-flash",
       "permission": {
         "skill": {
-          "coding-standards": "deny"
-        }
+          "coding-standards": "deny",
+        },
       },
     },
     "general": {
@@ -37,8 +63,8 @@
       "mode": "primary",
       "permission": {
         "skill": {
-          "coding-standards": "deny"
-        }
+          "coding-standards": "deny",
+        },
       },
     },
     "plan": {
@@ -57,8 +83,5 @@
     "ignore": ["node_modules/**", "dist/**", ".git/**"],
   },
   "enabled_providers": ["deepseek"],
-  "plugin": [
-    "cc-safety-net",
-    "opencode-vibeguard",
-  ],
+  "plugin": ["cc-safety-net", "opencode-vibeguard"],
 }
