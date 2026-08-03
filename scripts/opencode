@@ -1,0 +1,62 @@
+#!/usr/bin/env fish
+if set -q BWRAP
+    and test "$BWRAP" = "0"
+    echo "opencode-wrapper: bwrap is not isolating the agent; auto-approval is disabled." >&2
+    set -l args
+    for a in $argv
+        if test "$a" = "--auto"
+            echo "opencode-wrapper: stripping the --auto flag" >&2
+            continue
+        end
+        set -a args "$a"
+    end
+    sleep 1;
+    exec env OPENCODE_ENABLE_EXA=1 /usr/bin/opencode $args
+end
+
+set -l cwd (pwd)
+
+set -l host (hostname)
+
+touch "$HOME/TODO.md"
+
+if test "$cwd" = "$HOME"
+    echo "opencode-wrapper: refusing to sandbox from \$HOME (would expose ~ read-write). cd into a project directory." >&2
+    exit 1
+end
+if string match -q "$cwd/*" "$HOME"
+    echo "opencode-wrapper: refusing to sandbox from $cwd (a parent of \$HOME). cd into a project directory." >&2
+    exit 1
+end
+
+echo "opencode-wrapper: bwrap is isolating the agent; allowing all commands." >&2
+set -l args
+set -l has_auto 0
+for a in $argv
+    if test "$a" = "--auto"
+        set has_auto 1
+    end
+    set -a args "$a"
+end
+if test "$has_auto" = "0"
+    set -a args "--auto"
+end
+
+exec /usr/bin/bwrap \
+    --unshare-all \
+    --share-net \
+    --die-with-parent \
+    --hostname "$host"_OpenCode_Isolated \
+    --ro-bind / / \
+    --proc /proc \
+    --dev /dev \
+    --tmpfs /tmp \
+    --bind "$cwd" "$cwd" \
+    --bind "$HOME/.config/opencode" "$HOME/.config/opencode" \
+    --bind "$HOME/.local/share/opencode" "$HOME/.local/share/opencode" \
+    --bind "$HOME/.local/state/opencode" "$HOME/.local/state/opencode" \
+    --bind "$HOME/.cache" "$HOME/.cache" \
+    --bind "$HOME/TODO.md" "$HOME/TODO.md" \
+    --ro-bind "$HOME/.agents" "$HOME/.agents" \
+    --setenv OPENCODE_ENABLE_EXA 1 \
+    /usr/bin/opencode $args
