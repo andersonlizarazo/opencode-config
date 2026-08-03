@@ -83,5 +83,5 @@
     "ignore": ["node_modules/**", "dist/**", ".git/**"],
   },
   "enabled_providers": ["opencode", "deepseek"],
-  "plugin": ["cc-safety-net", "opencode-vibeguard"],
+  "plugin": ["opencode-vibeguard"],
 }
