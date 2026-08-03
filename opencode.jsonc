@@ -82,6 +82,6 @@
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**"],
   },
-  "enabled_providers": ["deepseek"],
+  "enabled_providers": ["opencode", "deepseek"],
   "plugin": ["cc-safety-net", "opencode-vibeguard"],
 }
