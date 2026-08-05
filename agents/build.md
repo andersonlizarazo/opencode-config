@@ -6,10 +6,21 @@ permission:
   edit: allow
   bash:
     "*": ask
+    "cargo build *": allow
+    "cargo fmt *": allow
+    "cargo test *": allow
     "file *": allow
     "find *": allow
     "git log *": allow
+    "go build *": allow
+    "go test *": allow
     "ls *": allow
+    "make *": allow
+    "npm run *": allow
+    "npm test *": allow
+    "npx *": allow
+    "python -m pytest *": allow
+    "pytest *": allow
   webfetch: deny
   websearch: deny
 ---

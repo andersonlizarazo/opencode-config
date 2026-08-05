@@ -8,6 +8,7 @@ permission:
     "*": ask
     "file *": allow
     "find *": allow
+    "git diff *": allow
     "git log *": allow
     "ls *": allow
 ---
@@ -106,8 +107,7 @@ Findings:
 </examples>
 
 <instructions>
-1. Run `git diff` (staged and unstaged) to see what changed — it asks for
-   approval; approve it.
+1. Run `git diff` (staged and unstaged) to see what changed.
 2. For each changed file, read enough context to understand the enclosing
    function, class, or module.
 3. Trace the data flow: where does each value come from, where does it go,
