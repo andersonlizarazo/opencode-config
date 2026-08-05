@@ -36,7 +36,19 @@
         "category": "PRIVATE_KEY"
       },
       { "pattern": "hf_[A-Za-z0-9]{34}", "category": "HUGGINGFACE_TOKEN" },
-      { "pattern": "AIza[0-9A-Za-z\\-_]{35}", "category": "GOOGLE_API_KEY" }
+      { "pattern": "AIza[0-9A-Za-z\\-_]{35}", "category": "GOOGLE_API_KEY" },
+      {
+        "pattern": "(pass|password|password2)\\s*=\\s*[A-Za-z0-9_+/=-]{40,}",
+        "category": "RCLONE_PASSWORD"
+      },
+      {
+        "pattern": "sasl_password\\s*=\\s*\"[^\"]+\"",
+        "category": "SASL_PASSWORD"
+      },
+      {
+        "pattern": "edidHash\\s*:\\s*\"[0-9a-f]{32}\"",
+        "category": "DEVICE_HARDWARE_ID"
+      }
     ],
     "builtin": ["email", "china_phone", "china_id", "uuid", "ipv4", "mac"],
     "exclude": ["example.com", "localhost", "127.0.0.1", "0.0.0.0"]
