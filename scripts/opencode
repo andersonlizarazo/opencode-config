@@ -14,19 +14,20 @@ if set -q BWRAP
     exec env OPENCODE_ENABLE_EXA=1 /usr/bin/opencode $args
 end
 
-set -l cwd (pwd)
+set -l cwd (realpath (pwd))
+set -l real_home (realpath "$HOME")
 
-set -l host (hostname)
+set -l host (string replace -a -r "[^A-Za-z0-9.-]" "-" (hostname))
 
 touch "$HOME/TODO.md"
 
-if test "$cwd" = "$HOME"
-    echo "opencode-wrapper: refusing to sandbox from \$HOME (would expose ~ read-write). cd into a project directory." >&2
+if test "$cwd" = "$real_home"; or string match -q -- "$cwd"/* "$real_home"
+    echo "opencode-wrapper: refusing to sandbox from $cwd (would expose \$HOME read-write). cd into a project directory." >&2
     exit 1
 end
-if string match -q "$cwd/*" "$HOME"
-    echo "opencode-wrapper: refusing to sandbox from $cwd (a parent of \$HOME). cd into a project directory." >&2
-    exit 1
+
+for d in "$HOME/.config/opencode" "$HOME/.local/share/opencode" "$HOME/.local/state/opencode" "$HOME/.cache"
+    mkdir -p "$d"
 end
 
 echo "opencode-wrapper: bwrap is isolating the agent; allowing all commands." >&2
@@ -46,7 +47,7 @@ exec /usr/bin/bwrap \
     --unshare-all \
     --share-net \
     --die-with-parent \
-    --hostname "$host"_OpenCode_Isolated \
+    --hostname "$host"-OpenCode-Isolated \
     --ro-bind / / \
     --proc /proc \
     --dev /dev \
@@ -59,4 +60,5 @@ exec /usr/bin/bwrap \
     --bind "$HOME/TODO.md" "$HOME/TODO.md" \
     --ro-bind "$HOME/.agents" "$HOME/.agents" \
     --setenv OPENCODE_ENABLE_EXA 1 \
+    --setenv npm_config_cache "$HOME/.cache/npm" \
     /usr/bin/opencode $args
