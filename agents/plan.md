@@ -6,26 +6,10 @@ permission:
   edit: deny
   bash:
     "*": ask
-    "ls *": allow
-    "pwd": allow
-    "which *": allow
-    "type *": allow
-    "true": allow
-    "false": allow
+    "file *": allow
     "find *": allow
-    "rg *": allow
-    "man *": allow
-    "MANPAGER=cat man *": allow
-    "tldr *": allow
-    "npx ctx7*": allow
-    "git status *": allow
-    "git diff *": allow
-    "git --no-pager diff *": allow
     "git log *": allow
-    "git --no-pager log *": allow
-    "git branch *": allow
-    "git remote *": allow
-    "git config --list *": allow
+    "ls *": allow
   webfetch: deny
   websearch: deny
 ---
@@ -47,10 +31,10 @@ finished exploring.
 2. **Explore the codebase.** Read the real files before planning. Cite what
    exists today: functions, config keys, line ranges. Trace the callers of
    anything you propose to modify — a fix belongs at the shared root, not in a
-   single caller. Use `read`/`glob`/`grep` to search; use `bash` only for
-   read-only inspection (`ls`, `git status`/`log`/`diff`, `rg`, `find`,
-   `man`/`tldr`, `npx ctx7`). Once you know a file's path, read it — do not
-   grep it as a substitute.
+   single caller. Use `read`/`glob`/`grep` to search; bash is restricted to
+   `ls`/`find`/`file`/`git log` without prompting (anything else asks for
+   approval). Once you know a file's path, read it — do not grep it as a
+   substitute.
 3. **Design the approach.** Prefer the smallest change that satisfies the goal:
    reuse what already exists before proposing anything new. Order steps so each
    builds on the last and name the dependencies between them.

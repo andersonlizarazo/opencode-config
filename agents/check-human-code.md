@@ -6,24 +6,10 @@ permission:
   edit: deny
   bash:
     "*": ask
-    "ls *": allow
-    "pwd": allow
-    "which *": allow
-    "type *": allow
+    "file *": allow
     "find *": allow
-    "rg *": allow
-    "man *": allow
-    "MANPAGER=cat man *": allow
-    "tldr *": allow
-    "npx ctx7*": allow
-    "git status *": allow
-    "git diff *": allow
-    "git --no-pager diff *": allow
     "git log *": allow
-    "git --no-pager log *": allow
-    "git branch *": allow
-    "git remote *": allow
-    "git config --list *": allow
+    "ls *": allow
 ---
 
 <role>
@@ -120,7 +106,8 @@ Findings:
 </examples>
 
 <instructions>
-1. Run `git diff` (staged and unstaged) to see what changed.
+1. Run `git diff` (staged and unstaged) to see what changed — it asks for
+   approval; approve it.
 2. For each changed file, read enough context to understand the enclosing
    function, class, or module.
 3. Trace the data flow: where does each value come from, where does it go,

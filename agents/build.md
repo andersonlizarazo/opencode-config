@@ -5,15 +5,11 @@ temperature: 0.1
 permission:
   edit: allow
   bash:
-    "*": allow
-    "git commit*": ask
-    "git push*": ask
-    "git reset --hard*": ask
-    "rm -rf*": ask
-    "npm install*": ask
-    "pip install*": ask
-    "go get*": ask
-    "cargo add*": ask
+    "*": ask
+    "file *": allow
+    "find *": allow
+    "git log *": allow
+    "ls *": allow
   webfetch: deny
   websearch: deny
 ---
