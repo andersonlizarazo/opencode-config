@@ -2,7 +2,6 @@
 description: Implements a handed-off plan and verifies it — makes the file changes the plan specifies, then runs typecheck/lint/test/build until green. Use when a plan is complete and ready to be built, or hand it any implementation task.
 mode: subagent
 temperature: 0.1
-steps: 12
 permission:
   edit: allow
   bash:
