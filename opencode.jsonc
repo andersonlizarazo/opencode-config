@@ -1,12 +1,12 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "instructions": [
-    "instructions/candor.md",
-    "instructions/environment.md",
-    "instructions/shell-strategy.md",
-    "instructions/vibeguard.md",
-    "instructions/source-code-fetch.md",
-    "instructions/docs-first.md",
+    "~/.config/opencode/instructions/candor.md",
+    "~/.config/opencode/instructions/environment.md",
+    "~/.config/opencode/instructions/shell-strategy.md",
+    "~/.config/opencode/instructions/vibeguard.md",
+    "~/.config/opencode/instructions/source-code-fetch.md",
+    "~/.config/opencode/instructions/docs-first.md",
   ],
   "permission": {
     "bash": {
