@@ -26,7 +26,7 @@ if test "$cwd" = "$real_home"; or string match -q -- "$cwd"/* "$real_home"
     exit 1
 end
 
-for d in "$HOME/.config/opencode" "$HOME/.local/share/opencode" "$HOME/.local/state/opencode" "$HOME/.cache"
+for d in "$HOME/.config/opencode" "$HOME/.local/share/opencode" "$HOME/.local/state/opencode" "$HOME/.cache" "$HOME/.npm"
     mkdir -p "$d"
 end
 
@@ -43,6 +43,7 @@ if test "$has_auto" = "0"
     set -a args "--auto"
 end
 
+# TODO: Consider using the NPM cache env variable to use `XDG_CACHE_HOME` instead.
 exec /usr/bin/bwrap \
     --unshare-all \
     --share-net \
@@ -58,7 +59,7 @@ exec /usr/bin/bwrap \
     --bind "$HOME/.local/state/opencode" "$HOME/.local/state/opencode" \
     --bind "$HOME/.cache" "$HOME/.cache" \
     --bind "$HOME/TODO.md" "$HOME/TODO.md" \
-    --ro-bind "$HOME/.agents" "$HOME/.agents" \
+    --bind "$HOME/.local/share/go" "$HOME/.local/share/go" \
+    --bind "$HOME/.npm" "$HOME/.npm" \
     --setenv OPENCODE_ENABLE_EXA 1 \
-    --setenv npm_config_cache "$HOME/.cache/npm" \
     /usr/bin/opencode $args
